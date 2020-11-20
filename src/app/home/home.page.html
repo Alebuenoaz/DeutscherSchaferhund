@@ -13,13 +13,13 @@
     </ion-toolbar>
   </ion-header>
 
+  <!--
   <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    <!-- LETS ADD THE FIELD TEXT OF THE OBJECT WE RETRIEVE IN A SIMPLE ION-TEXT TAG -->
-    <ion-text>Prueba: {{doc?.Stock}}</ion-text>
   </div>
 
+  
   <ion-card>
     <ion-item href="#" class="ion-activated">
       <ion-icon name="wifi" slot="start"></ion-icon>
@@ -41,25 +41,54 @@
       <ion-label>Card Button Item 2</ion-label>
     </ion-item>
   </ion-card>
+  -->
+
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let item of Tareas">
+      <ion-card class="horizontal-cards">
+        <ion-item>
+          <!--ion-icon name="pin" slot="start"></ion-icon-->
+          <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
+          <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
+          <ion-button>
+            <ion-icon name="add-outline"></ion-icon>
+            <ion-icon name="cart-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      
+        <ion-card-content>
+          Decripción: {{item.data.Descripcion}}
+        </ion-card-content>
+        <ion-card-content>
+          Cantidad requerida: {{item.data.Stock}}
+        </ion-card-content>
+        <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
+        <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 
   <ion-list *ngIf="Tareas.length != 0">
-    <ion-card *ngFor="let item of Tareas">
+    <ion-card class="horizontal-cards" *ngFor="let item of Tareas">
       <ion-item>
-        <ion-icon name="pin" slot="start"></ion-icon>
-        <ion-label>ITEM - {{item.id}}</ion-label>
-        <ion-button fill="outline" slot="end">View</ion-button>
+        <!--ion-icon name="pin" slot="start"></ion-icon-->
+        <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
+        <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
+        <ion-button>
+          <ion-icon name="add-outline"></ion-icon>
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button>
       </ion-item>
     
       <ion-card-content>
-        Decripción: This is content, without any paragraph or header tags,
-        within an ion-card-content element.
+        Decripción: {{item.data.Descripcion}}
       </ion-card-content>
       <ion-card-content>
-        Cantidad Faltante: {{item.data.Stock}}
+        Cantidad requerida: {{item.data.Stock}}
       </ion-card-content>
+      <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
+      <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
     </ion-card>
   </ion-list>
-
-  <ion-button (click)="fetch2()">Fetch</ion-button>
 
 </ion-content>
