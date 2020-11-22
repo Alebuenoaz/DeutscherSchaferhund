@@ -1,6 +1,6 @@
 <div *ngIf="suppliers?.length > 0;else noSuppliers">
 <ul *ngFor="let supplier of suppliers" class="collection">
-    <li class="collection-item"><strong>{{supplier.nombre}}: </strong> {{supplier.correo}}: {{supplier.numero}}</li>
+    <li (dblclick)="deleteSupplier($event, supplier)" class="collection-item"><strong>{{supplier.nombre}}: </strong> {{supplier.correo}}: {{supplier.numero}}</li>
 </ul>
 </div>
 

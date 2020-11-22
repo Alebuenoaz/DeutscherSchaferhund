@@ -1,7 +1,8 @@
 export interface Supplier {
+    id:string;
     correo?:string;
     nombre:string;
-    numero: Int32Array;
+    numero: number;
   
   }
   

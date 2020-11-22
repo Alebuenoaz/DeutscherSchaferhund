@@ -19,4 +19,8 @@ export class SuppliersComponent implements OnInit {
     });
   }
 
+  deleteSupplier(event, supplier)
+  {
+    this.supplierService.deleteSupplier(supplier);
+  }
 }
