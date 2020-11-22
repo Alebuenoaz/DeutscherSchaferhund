@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 // Import AngularFirestore to make Queries.
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
 import { Producto } from '../Producto';
 
 @Component({
@@ -22,9 +24,12 @@ export class HomePage implements OnInit {
      // centeredSlides: true,
      slidesPerView: 1
    };
+   cart = [];
 
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(){
@@ -34,6 +39,7 @@ export class HomePage implements OnInit {
       console.log('Doc retrieved', this.doc);
     });*/
     this.getProducts();
+    this.cart = this.cartService.getCart();
   }
 
   getProducts() {
@@ -44,6 +50,14 @@ export class HomePage implements OnInit {
       });
       console.log(this.Tareas);
     });
+  }
+
+  addToCart(product) {
+    this.cartService.addProduct(product);
+  }
+
+  openCart() {
+    this.router.navigate(['cart']);
   }
 
 }
