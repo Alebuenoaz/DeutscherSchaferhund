@@ -37,18 +37,9 @@
               },
               {
                 "input": "src/global.scss"
-              },
-              {
-                "input": "../node_modules/font-awesome/css/font-awesome.css",
-              },
-              {
-                "input": "../node_modules/materialize-css/dist/css/materialize.css"
               }
             ],
-            "scripts": [
-              "../node_modules/jquery/dist/jquery.js",
-               "../node_modules/materialize-css/dist/js/materialize.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
