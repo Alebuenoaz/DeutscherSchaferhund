@@ -18,8 +18,8 @@ export class LoginPage implements OnInit {
   }
 
   async loginProveedor(form):Promise<void>{
-    this.router.navigateByUrl('home');
-    /*this.authService.loginProveedor(form.value.email, form.value.passsword).then(
+    //this.router.navigateByUrl('home');
+    this.authService.loginProveedor(form.value.email, form.value.pass).then(
       ()=>{
         this.router.navigateByUrl('home');
       },
@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
         });
         await alert.present();
       }
-    );*/
+    );
   }
 
 }
