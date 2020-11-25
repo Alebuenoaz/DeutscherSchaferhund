@@ -16,13 +16,9 @@ import { environment } from 'src/environments/environment';
 
 // IMPORT FIRESTORE (DB) MODULE TO PERFORM A QUERY
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { SuppliersComponent} from  './components/suppliers/suppliers.component';
-import { NavbarComponent} from  './components/navbar/navbar.component';
-import { AddSupplierComponent} from  './components/add-supplier/add-supplier.component';
-import { SupplierService} from  './services/supplier.service'
 
 @NgModule({
-  declarations: [AppComponent, SuppliersComponent,NavbarComponent,AddSupplierComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -37,7 +33,6 @@ import { SupplierService} from  './services/supplier.service'
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SupplierService
   ],
   bootstrap: [AppComponent]
 })
