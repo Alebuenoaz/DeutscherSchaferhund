@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -22,7 +21,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   entryComponents: [],
   imports: [
     BrowserModule,
-    FormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     // Add the modules to import and initialize the AngularFireModule with the environment.firebase we added previously.
@@ -32,7 +30,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

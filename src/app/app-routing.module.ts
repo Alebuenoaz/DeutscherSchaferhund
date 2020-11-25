@@ -14,8 +14,14 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./submit-form/submit-form.module').then( m => m.SubmitFormPageModule)
   }
-
 ];
 
 @NgModule({
