@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 // Import AngularFirestore to make Queries.
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { CartService } from '../cart.service';
 import { Producto } from '../Producto';
+import { CartService } from '../services/cart.service';
 
 
 @Component({
@@ -62,7 +62,18 @@ export class HomePage implements OnInit {
   }
   goToRegister()
   {
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
+  }
+  itemAdded(item){
+    var myCart = this.cartService.getCart();
+    var i;
+    for (i = 0; i < myCart.length; i++) {
+        if (myCart[i] === item) {
+            return true;
+        }
+    }
+
+    return false;
   }
 
 }

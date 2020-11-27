@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CartService } from '../cart.service';
+import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-submit-form',
@@ -80,5 +81,14 @@ export class SubmitFormPage implements OnInit {
 
   public submit() {
     console.log(this.registrationForm.value);
+    this.cartService.addProductDB(
+      {
+        nombreEncargado: this.registrationForm.value.name,
+        telefonoEncargado: this.registrationForm.value.phone,
+        emailEncargado: this.registrationForm.value.email,
+        descripcion: this.registrationForm.value.description.contentDesc,
+        productos: this.cartService.getCart().map(product => product.data.Producto)
+      }
+    );
   }
 }

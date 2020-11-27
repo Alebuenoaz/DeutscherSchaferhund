@@ -57,7 +57,7 @@
           <!--ion-icon name="pin" slot="start"></ion-icon-->
           <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
           <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
-          <ion-button (click)="addToCart(item)">
+          <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)">
             <ion-icon name="add-outline"></ion-icon>
             <ion-icon name="cart-outline"></ion-icon>
           </ion-button>
