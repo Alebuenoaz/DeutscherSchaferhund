@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../cart.service';
 import { Producto } from '../Producto';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -58,6 +59,10 @@ export class HomePage implements OnInit {
 
   openCart() {
     this.router.navigate(['cart']);
+  }
+  goToRegister()
+  {
+    this.router.navigate(['register'])
   }
 
 }

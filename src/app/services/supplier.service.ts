@@ -17,7 +17,7 @@ export class SupplierService {
   this.suppliersCollection = this.afs.collection('Proveedores', ref => ref.orderBy('nombre','asc'));
    this.suppliers = this.suppliersCollection.snapshotChanges().pipe(map(changes =>{
     return changes.map(a => {
-      const data = a.payload.doc.data() as Supplier;
+      const data = a.payload.doc.data() as any;
       data.id = a.payload.doc.id;
       return data;
     });
