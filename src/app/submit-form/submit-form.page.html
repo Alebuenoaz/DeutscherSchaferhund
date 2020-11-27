@@ -12,7 +12,7 @@
     <form [formGroup]="registrationForm" (ngSubmit)="submit()">
       <ion-list>
         <ion-item>
-          <ion-label position="floating">Name</ion-label>
+          <ion-label position="floating">Nombre del Encargado</ion-label>
           <ion-input autocapitalize inputmode="text" formControlName="name"></ion-input>
         </ion-item>
         <div *ngFor="let error of errorMessages.name">
@@ -21,7 +21,7 @@
           </ng-container>
         </div>
         <ion-item>
-          <ion-label position="floating">Phone</ion-label>
+          <ion-label position="floating">Telefono del Encargado</ion-label>
           <ion-input inputmode="tel" formControlName="phone"></ion-input>
         </ion-item>
         <div *ngFor="let error of errorMessages.phone">
@@ -30,7 +30,7 @@
           </ng-container>
         </div>
         <ion-item>
-          <ion-label position="floating">Email</ion-label>
+          <ion-label position="floating">Email del Encargado</ion-label>
           <ion-input inputmode="email" formControlName="email"></ion-input>
         </ion-item>
         <div *ngFor="let error of errorMessages.email">
@@ -39,43 +39,28 @@
           </ng-container>
         </div>
       </ion-list>
-      <ion-list formGroupName="address">
+      <ion-list formGroupName="description">
         <ion-list-header>
-          <ion-label>Address</ion-label>
+          <ion-label>Descripcion: Breve descripcion por cada producto</ion-label>
         </ion-list-header>
+        <!-- <ion-item>
+          <!-- <ion-label position="floating">Detalles</ion-label> 
+          <ion-input autocapitalize inputmode="text" placeholder="----------" formControlName="contentDesc"></ion-input>
+        </ion-item> -->
         <ion-item>
-          <ion-label position="floating">Street</ion-label>
-          <ion-input formControlName="street"></ion-input>
+          <ion-textarea 
+            rows="6"
+            wrap="off"
+            placeholder="----------------Ejemplo de Descripcion----------------
+Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
+Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
+Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
+Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
+Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.">
+          </ion-textarea>
         </ion-item>
-        <div *ngFor="let error of errorMessages.street">
-          <ng-container *ngIf="street.hasError(error.type) && (street.dirty || street.touched)">
-            <small class="error-message">{{error.message}}</small>
-          </ng-container>
-        </div>
-        <ion-item>
-          <ion-label position="floating">City</ion-label>
-          <ion-input formControlName="city"></ion-input>
-        </ion-item>
-        <div *ngFor="let error of errorMessages.city">
-          <ng-container *ngIf="city.hasError(error.type) && (city.dirty || city.touched)">
-            <small class="error-message">{{error.message}}</small>
-          </ng-container>
-        </div>
-        <ion-item>
-          <ion-label position="floating">State</ion-label>
-          <ion-input formControlName="state"></ion-input>
-        </ion-item>
-        <div *ngFor="let error of errorMessages.state">
-          <ng-container *ngIf="state.hasError(error.type) && (state.dirty || state.touched)">
-            <small class="error-message">{{error.message}}</small>
-          </ng-container>
-        </div>
-        <ion-item>
-          <ion-label position="floating">NIT</ion-label>
-          <ion-input formControlName="zip"></ion-input>
-        </ion-item>
-        <div *ngFor="let error of errorMessages.zip">
-          <ng-container *ngIf="zip.hasError(error.type) && (zip.dirty || zip.touched)">
+        <div *ngFor="let error of errorMessages.contentDesc">
+          <ng-container *ngIf="contentDesc.hasError(error.type) && (contentDesc.dirty || contentDesc.touched)">
             <small class="error-message">{{error.message}}</small>
           </ng-container>
         </div>
