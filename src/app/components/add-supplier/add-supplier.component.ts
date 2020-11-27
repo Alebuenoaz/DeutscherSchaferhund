@@ -9,9 +9,10 @@ import { Supplier} from '../../models/supplier';
 })
 export class AddSupplierComponent implements OnInit {
   supplier: Supplier = {
-    id: '',
     nombre: '',
     correo: '',
+    NIT: null,
+    direccion: '',
     numero: null
   }
 
@@ -26,6 +27,8 @@ export class AddSupplierComponent implements OnInit {
       this.supplier.nombre = '';
       this.supplier.correo = '';
       this.supplier.numero = null;
+      this.supplier.NIT = null;
+      this.supplier.direccion = '';
     }
   }
 
