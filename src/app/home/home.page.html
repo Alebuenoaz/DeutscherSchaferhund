@@ -74,12 +74,10 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-list *ngIf="Tareas.length != 0">
+  <!--ion-list *ngIf="Tareas.length != 0">
     <ion-card class="horizontal-cards" *ngFor="let item of Tareas">
       <ion-item>
-        <!--ion-icon name="pin" slot="start"></ion-icon-->
         <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
-        <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
         <ion-button (click)="addToCart(item)">
           <ion-icon name="add-outline"></ion-icon>
           <ion-icon name="cart-outline"></ion-icon>
@@ -93,8 +91,7 @@
         Cantidad requerida: {{item.data.Stock}}
       </ion-card-content>
       <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
-      <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
     </ion-card>
-  </ion-list>
+  </ion-list-->
 
 </ion-content>

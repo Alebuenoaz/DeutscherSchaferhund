@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
    sliderConfig = {
      spaceBetween: 2,
      // centeredSlides: true,
-     slidesPerView: 1
+     slidesPerView: 4
    };
    cart = [];
 
