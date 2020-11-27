@@ -4,6 +4,7 @@ export interface Supplier {
     numero: number;
     NIT: number;
     direccion: string;
+    password: string;
   
   }
   

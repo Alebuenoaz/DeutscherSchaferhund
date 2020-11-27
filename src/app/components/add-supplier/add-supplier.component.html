@@ -4,23 +4,27 @@
     <form (ngSubmit)="onSubmit()" class="col s6">
       <div class="row">
         <div class="input-field col s6">
-          <input type="text"placeholder="Nombre" [(ngModel)]="supplier.nombre" name="nombre">
+          <input type="text" [(ngModel)]="supplier.nombre" name="nombre">
           <label>Nombre</label>
         </div>
         <div class="input-field col s6">
-          <input type="text"placeholder="Correo" [(ngModel)]="supplier.correo" name="correo">
+          <input type="text" [(ngModel)]="supplier.correo" name="correo">
           <label>Correo electrónico</label>
         </div>
         <div class="input-field col s6">
-          <input type="number"placeholder="Número" [(ngModel)]="supplier.numero" name="numero">
+          <input type="password" [(ngModel)]="supplier.password" name="password">
+          <label>Contraseña</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="number" [(ngModel)]="supplier.numero" name="numero">
           <label>Número de teléfono</label>
         </div>
         <div class="input-field col s6">
-          <input type="number"placeholder="NIT" [(ngModel)]="supplier.NIT" name="NIT">
+          <input type="number" [(ngModel)]="supplier.NIT" name="NIT">
           <label>NIT</label>
         </div>
         <div class="input-field col s6">
-          <input type="text"placeholder="Dirección" [(ngModel)]="supplier.direccion" name="direccion">
+          <input type="text" [(ngModel)]="supplier.direccion" name="direccion">
           <label>Dirección</label>
         </div>
         <input type="submit" value="Añadir" class="btn">

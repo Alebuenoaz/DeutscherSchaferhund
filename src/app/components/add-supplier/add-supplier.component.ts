@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SupplierService} from '../../services/supplier.service';
 import { Supplier} from '../../models/supplier';
+import firebase from 'firebase/app';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-supplier',
@@ -16,7 +18,7 @@ export class AddSupplierComponent implements OnInit {
     numero: null
   }
 
-  constructor(private supplierService: SupplierService) { }
+  constructor(private supplierService: SupplierService, private authService:AuthService) { }
 
   ngOnInit() {
     
@@ -24,6 +26,7 @@ export class AddSupplierComponent implements OnInit {
   onSubmit(){
     if(this.supplier.nombre != '' && this.supplier.correo != ''){
       this.supplierService.addSupplier(this.supplier);
+      this.authService.RegisterProveedor(this.supplier.correo, this.supplier.password);
       this.supplier.nombre = '';
       this.supplier.correo = '';
       this.supplier.numero = null;
