@@ -19,60 +19,27 @@ export class SubmitFormPage implements OnInit {
   get phone() {
     return this.registrationForm.get('phone');
   }
-  get street() {
-    return this.registrationForm.get('address.street');
-  }
-  get city() {
-    return this.registrationForm.get('address.city');
-  }
-  get state() {
-    return this.registrationForm.get('address.state');
-  }
-  get zip() {
-    return this.registrationForm.get('address.zip');
+  get contentDesc() {
+    return this.registrationForm.get('description.contentDesc');
   }
 
   public errorMessages = {
     name: [
-      { type: 'required', message: 'Name is required' },
-      { type: 'maxlength', message: 'Name cant be longer than 100 characters' }
+      { type: 'required', message: 'Debe poner el nombre del encargado' },
+      { type: 'maxlength', message: 'No debe exceder los 100 caracteres' }
     ],
     email: [
-      { type: 'required', message: 'Email is required' },
-      { type: 'pattern', message: 'Please enter a valid email address' }
+      { type: 'required', message: 'Debe poner el email del encargado' },
+      { type: 'pattern', message: 'Porfavor ingrese una direccion de email valida' }
     ],
     phone: [
-      { type: 'required', message: 'Phone number is required' },
-      { type: 'pattern', message: 'Please enter a valid phone number' }
+      { type: 'required', message: 'Debe poner el telefono del encargado' },
+      { type: 'pattern', message: 'Porfavor ingrese un telefono valido' }
     ],
-    street: [
-      { type: 'required', message: 'Street name is required' },
-      {
-        type: 'maxlength',
-        message: 'Street name cant be longer than 100 characters'
-      }
+    contentDesc: [
+      { type: 'required', message: 'Debe poner una descripcion para cada item de la oferta' },
+      { type: 'maxlength', message: 'No debe exceder los 300 caracteres' }
     ],
-    city: [
-      { type: 'required', message: 'City name is required' },
-      {
-        type: 'maxlength',
-        message: 'City name cant be longer than 100 characters'
-      }
-    ],
-    state: [
-      { type: 'required', message: 'State is required' },
-      {
-        type: 'maxlength',
-        message: 'State cant be longer than 100 characters'
-      }
-    ],
-    zip: [
-      { type: 'required', message: 'Zip code is required' },
-      {
-        type: 'pattern',
-        message: 'Please enter a valid zip code'
-      }
-    ]
   };
 
   registrationForm = this.formBuilder.group({
@@ -85,11 +52,8 @@ export class SubmitFormPage implements OnInit {
       Validators.required,
       Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
     ]],
-    address: this.formBuilder.group({
-      street: ['', [Validators.required, Validators.maxLength(100)]],
-      city: ['', [Validators.required, Validators.maxLength(100)]],
-      state: ['', [Validators.required, Validators.maxLength(100)]],
-      zip: ['', [Validators.required, Validators.pattern('^[0-9]{10}(?:-[0-9]{4})?$')]]
+    description: this.formBuilder.group({
+      contentDesc: ['', [Validators.required, Validators.maxLength(300)]]
     })
   });
 
