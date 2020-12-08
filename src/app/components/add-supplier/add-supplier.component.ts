@@ -15,7 +15,8 @@ export class AddSupplierComponent implements OnInit {
     correo: '',
     NIT: null,
     direccion: '',
-    numero: null
+    numero: null,
+    password: ''
   }
 
   constructor(private supplierService: SupplierService, private authService:AuthService) { }
@@ -32,6 +33,7 @@ export class AddSupplierComponent implements OnInit {
       this.supplier.numero = null;
       this.supplier.NIT = null;
       this.supplier.direccion = '';
+      this.supplier.password = '';
     }
   }
 
