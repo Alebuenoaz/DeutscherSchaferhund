@@ -9,13 +9,14 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./submit-form.page.scss'],
 })
 export class SubmitFormPage implements OnInit {
-
+  amount: string;
+  price: string;
 
   get name() {
-    return this.registrationForm.get("name");
+    return this.registrationForm.get('name');
   }
   get email() {
-    return this.registrationForm.get("email");
+    return this.registrationForm.get('email');
   }
   get phone() {
     return this.registrationForm.get('phone');
@@ -40,7 +41,7 @@ export class SubmitFormPage implements OnInit {
     contentDesc: [
       { type: 'required', message: 'Debe poner una descripcion para cada item de la oferta' },
       { type: 'maxlength', message: 'No debe exceder los 300 caracteres' }
-    ],
+    ]
   };
 
   registrationForm = this.formBuilder.group({
@@ -59,12 +60,14 @@ export class SubmitFormPage implements OnInit {
   });
 
   selectedItems = [];
+  itemsOffered = [];
   total = 0;
 
   constructor(private formBuilder: FormBuilder, private cartService: CartService) { }
 
   ngOnInit() {
-    let items = this.cartService.getCart();
+    this.selectedItems = this.cartService.getCart();
+    /*let items = this.cartService.getCart();
     let selected = {};
 
     for (let obj of items) {
@@ -74,9 +77,25 @@ export class SubmitFormPage implements OnInit {
         selected[obj.id] = {...obj, count: 1};
       }
     }
-    this.selectedItems = Object.keys(selected).map(key => selected[key]);
+    console.log('items0: ', this.selectedItems);
+    this.selectedItems = Object.keys(selected).map(key => selected[key]);*/
+    this.itemsOffered = this.cartService.getCart()
+    .map(element => (element.data))
+    .map(insumo => ({
+      insumo: insumo.Insumo,
+      img: insumo.Img,
+      unidad: insumo.Unidad,
+      cantidad: insumo.Stock,
+      cantidadOferta: insumo.Stock,
+      precioUnitario: '0'
+    }));
     console.log('items: ', this.selectedItems);
-    this.total = this.selectedItems.reduce((a, b) => + (b.data.count * b.data.price), 0);
+    console.log('itemsOffered: ', this.itemsOffered);
+    // this.total = this.selectedItems.reduce((a, b) => + (b.data.count * b.data.price), 0);
+  }
+
+  isCartEmpty() {
+    return (this.cartService.getCart().length === 0);
   }
 
   public submit() {
@@ -87,7 +106,13 @@ export class SubmitFormPage implements OnInit {
         telefonoEncargado: this.registrationForm.value.phone,
         emailEncargado: this.registrationForm.value.email,
         descripcion: this.registrationForm.value.description.contentDesc,
-        productos: this.cartService.getCart().map(product => product.data.Producto)
+        estado: 'Pendiente',
+        insumos: this.itemsOffered.map(input => (
+          {
+            insumo: input.insumo,
+            cantidad: input.cantidadOferta,
+            precioUnitario: input.precioUnitario,
+          }))
       }
     );
   }

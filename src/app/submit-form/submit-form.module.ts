@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +14,8 @@ import { SubmitFormPage } from './submit-form.page';
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
-    SubmitFormPageRoutingModule
+    SubmitFormPageRoutingModule,
+    FormsModule
   ],
   declarations: [SubmitFormPage]
 })

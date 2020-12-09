@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/cart"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Checkout</ion-title>
   </ion-toolbar>
@@ -41,7 +41,7 @@
       </ion-list>
       <ion-list formGroupName="description">
         <ion-list-header>
-          <ion-label>Descripcion: Breve descripcion por cada producto</ion-label>
+          <ion-label>Descripcion</ion-label>
         </ion-list-header>
         <!-- <ion-item>
           <ion-label position="floating">Detalles</ion-label> 
@@ -67,17 +67,36 @@
         </div>
       </ion-list>
       <!--<ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Ofertar-->
-      <ion-button [disabled]="!registrationForm.valid" type="submit" expand="block">Ofertar
+      <ion-button [disabled]="isCartEmpty() || !registrationForm.valid" type="submit" expand="block">Ofertar
         <ion-icon slot="end"name="create"></ion-icon>
       </ion-button>
     </form>
     <ion-list>
-      <ion-item *ngFor="let item of selectedItems" lines="inset">
-        <ion-thumbnail>
-          <ion-img [src]="item.data.Img"></ion-img>
-        </ion-thumbnail>
-        <ion-label> &nbsp; {{item.data.Producto}} - Cantidad requerida: {{item.data.Stock}}</ion-label>
-      </ion-item>
+      <ion-list-header>
+        Carrito
+      </ion-list-header>
+      <ion-row *ngFor="let item of itemsOffered;let i=index">
+        <ion-col size="5">
+          <ion-item  >
+            <ion-thumbnail>
+              <ion-img [src]="item.img"></ion-img>
+            </ion-thumbnail>
+            <ion-label> &nbsp; {{item.insumo}} - Cantidad requerida: {{item.cantidad}}</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item >
+            <ion-label position="floating">Cantidad</ion-label>
+            <ion-input  inputmode="numeric" type="number" min="{{item.cantidad}}" [(ngModel)]="item.cantidadOferta"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item>
+            <ion-label position="floating">Precio por {{ item.unidad }}</ion-label>
+            <ion-input inputmode="numeric" type="number" [(ngModel)]="item.precioUnitario"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-list>
   </div>
 </ion-content>

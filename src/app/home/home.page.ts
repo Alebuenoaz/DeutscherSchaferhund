@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Import AngularFirestore to make Queries.
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Producto } from '../Producto';
+import { Insumo } from '../models/insumo';
 import { CartService } from '../services/cart.service';
 
 
@@ -17,12 +17,12 @@ export class HomePage implements OnInit {
   tasks: any = [];
   Tareas: any = [{
     id: '',
-    data: {} as Producto
+    data: {} as Insumo
    }];
 
    sliderConfig = {
      spaceBetween: 2,
-     // centeredSlides: true,
+     //centeredSlides: true,
      slidesPerView: 4
    };
    cart = [];
@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
 
   ngOnInit(){
     // CALL FIRESTORE DOCUMENT AND SAVE IT IN OUR DOC VARIABLE.
-    /*this.firestore.doc('/Productos/Carne').valueChanges().subscribe(res => {
+    /*this.firestore.doc('/Insumos/Carne').valueChanges().subscribe(res => {
       this.doc = res;
       console.log('Doc retrieved', this.doc);
     });*/
@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
   }
 
   getProducts() {
-    this.firestore.collection('/Productos').snapshotChanges().subscribe(res => {
+    this.firestore.collection('/Insumos').snapshotChanges().subscribe(res => {
       this.Tareas = [];
       res.forEach(task => {
         this.Tareas.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
@@ -58,7 +58,7 @@ export class HomePage implements OnInit {
   }
 
   openCart() {
-    this.router.navigate(['cart']);
+    this.router.navigate(['checkout']);
   }
   goToRegister()
   {
