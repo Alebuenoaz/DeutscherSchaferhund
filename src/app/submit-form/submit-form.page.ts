@@ -107,6 +107,7 @@ export class SubmitFormPage implements OnInit {
         emailEncargado: this.registrationForm.value.email,
         descripcion: this.registrationForm.value.description.contentDesc,
         estado: 'Pendiente',
+        idProveedor: 'zATl83M6AUsSO4ZotZ1X',
         insumos: this.itemsOffered.map(input => (
           {
             insumo: input.insumo,

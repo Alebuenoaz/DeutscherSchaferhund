@@ -7,4 +7,5 @@ export interface Cart {
     descripcion: string;
     estado: string;
     insumos: Array<InsumoCart>;
+    idProveedor: string;
 }
