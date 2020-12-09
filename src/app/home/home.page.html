@@ -55,7 +55,7 @@
       <ion-card class="horizontal-cards">
         <ion-item>
           <!--ion-icon name="pin" slot="start"></ion-icon-->
-          <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
+          <ion-label style="text-transform: uppercase;"><b>{{item.data.Insumo}}</b></ion-label>
           <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
           <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)">
             <ion-icon name="add-outline"></ion-icon>
@@ -67,7 +67,7 @@
           Decripción: {{item.data.Descripcion}}
         </ion-card-content>
         <ion-card-content>
-          Cantidad requerida: {{item.data.Stock}}
+          Cantidad requerida: {{item.data.Stock}} {{ item.data.Unidad }}.
         </ion-card-content>
         <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
         <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
@@ -78,7 +78,7 @@
   <!--ion-list *ngIf="Tareas.length != 0">
     <ion-card class="horizontal-cards" *ngFor="let item of Tareas">
       <ion-item>
-        <ion-label style="text-transform: uppercase;"><b>{{item.data.Producto}}</b></ion-label>
+        <ion-label style="text-transform: uppercase;"><b>{{item.data.Insumo}}</b></ion-label>
         <ion-button (click)="addToCart(item)">
           <ion-icon name="add-outline"></ion-icon>
           <ion-icon name="cart-outline"></ion-icon>
