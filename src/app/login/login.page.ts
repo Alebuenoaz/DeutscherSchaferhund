@@ -18,7 +18,6 @@ export class LoginPage implements OnInit {
   }
 
   async loginProveedor(form):Promise<void>{
-    //this.router.navigateByUrl('home');
     this.authService.loginProveedor(form.value.email, form.value.pass).then(
       ()=>{
         this.router.navigateByUrl('home');
@@ -51,6 +50,7 @@ export class LoginPage implements OnInit {
   async presentAlertPrompt() {
     const alert = await this.alertCtrl.create({
       header: 'Ingrese su correo',
+      subHeader: 'se le enviara un correo para recuperar su contraseña',
       inputs: [
         {
           name: 'email',
@@ -70,8 +70,8 @@ export class LoginPage implements OnInit {
           handler: async () => {
             console.log('Confirmado');
             let result = await alert.onDidDismiss();
-            console.log(result);
-            this.resetPassword(result.data.email);
+            console.log(result.data.values.email);
+            this.resetPassword(result.data.values.email);
             this.router.navigateByUrl('login');
           }
         }
@@ -80,5 +80,4 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
-
 }
