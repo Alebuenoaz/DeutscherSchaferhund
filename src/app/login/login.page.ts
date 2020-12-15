@@ -17,6 +17,11 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  goToRegister()
+  {
+    this.router.navigate(['register']);
+  }
+
   async loginProveedor(form):Promise<void>{
     this.authService.loginProveedor(form.value.email, form.value.pass).then(
       ()=>{
