@@ -22,7 +22,7 @@
         </div>
         <ion-item>
           <ion-label position="floating">Telefono del Encargado</ion-label>
-          <ion-input inputmode="tel" formControlName="phone"></ion-input>
+          <ion-input inputmode="numeric" type="number" formControlName="phone"></ion-input>
         </ion-item>
         <div *ngFor="let error of errorMessages.phone">
           <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
@@ -52,12 +52,7 @@
             rows="6"
             wrap="off"
             formControlName="contentDesc"
-            placeholder="----------------Ejemplo de Descripcion----------------
-                        Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
-                        Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
-                        Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
-                        Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.
-                        Ofrece 10 Kg. de Harina a 12,5 Bs. por cada Kg.">
+            placeholder="Breve Descrición">
           </ion-textarea>
         </ion-item>
         <div *ngFor="let error of errorMessages.contentDesc">

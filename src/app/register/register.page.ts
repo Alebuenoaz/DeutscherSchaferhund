@@ -18,21 +18,23 @@ export class RegisterPage implements OnInit {
     numero: null,
     password: ''
   }
-  constructor(private supplierService: SupplierService, private authService:AuthService, private router:Router) { }
+  constructor(private supplierService: SupplierService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
   onSubmit(){
-    if(this.supplier.nombre != '' && this.supplier.correo != ''){
-      this.supplierService.addSupplier(this.supplier);
-      this.authService.RegisterProveedor(this.supplier.correo, this.supplier.password);
-      this.supplier.nombre = '';
-      this.supplier.correo = '';
-      this.supplier.numero = null;
-      this.supplier.NIT = null;
-      this.supplier.direccion = '';
-      this.supplier.password = '';
-      this.router.navigateByUrl('home');
+    if (this.supplier.nombre !== '' && this.supplier.correo !== ''){
+      this.authService.register(this.supplier).then(() => {
+        this.supplier.nombre = '';
+        this.supplier.correo = '';
+        this.supplier.numero = null;
+        this.supplier.NIT = null;
+        this.supplier.direccion = '';
+        this.supplier.password = '';
+        this.router.navigateByUrl('home');
+      });
+      // this.supplierService.addSupplier(this.supplier);
+      // this.authService.RegisterProveedor(this.supplier.correo, this.supplier.password);
     }
   }
 

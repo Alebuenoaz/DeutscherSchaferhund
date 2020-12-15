@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
+import { map, take } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -63,7 +65,11 @@ export class SubmitFormPage implements OnInit {
   itemsOffered = [];
   total = 0;
 
-  constructor(private formBuilder: FormBuilder, private cartService: CartService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private cartService: CartService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit() {
     this.selectedItems = this.cartService.getCart();
@@ -107,7 +113,7 @@ export class SubmitFormPage implements OnInit {
         emailEncargado: this.registrationForm.value.email,
         descripcion: this.registrationForm.value.description.contentDesc,
         estado: 'Pendiente',
-        idProveedor: 'zATl83M6AUsSO4ZotZ1X',
+        idProveedor: this.authService.getSupplierId(),
         insumos: this.itemsOffered.map(input => (
           {
             insumo: input.insumo,

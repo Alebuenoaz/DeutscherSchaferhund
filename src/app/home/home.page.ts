@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Insumo } from '../models/insumo';
+import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 
 
@@ -30,7 +31,8 @@ export class HomePage implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(){
@@ -49,7 +51,7 @@ export class HomePage implements OnInit {
       res.forEach(task => {
         this.Tareas.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
       });
-      console.log(this.Tareas);
+      //console.log(this.Tareas);
     });
   }
 
@@ -70,6 +72,12 @@ export class HomePage implements OnInit {
     }
 
     return false;
+  }
+
+  logOut() {
+    this.authService.logOut().then(() => {
+      this.router.navigate(['login']);
+    });
   }
 
 }
