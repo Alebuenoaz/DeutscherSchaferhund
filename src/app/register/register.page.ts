@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Supplier} from '../models/supplier';
 import { SupplierService} from '../services/supplier.service';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterPage implements OnInit {
     numero: null,
     password: ''
   }
-  constructor(private supplierService: SupplierService, private authService:AuthService) { }
+  constructor(private supplierService: SupplierService, private authService:AuthService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,7 @@ export class RegisterPage implements OnInit {
       this.supplier.NIT = null;
       this.supplier.direccion = '';
       this.supplier.password = '';
+      this.router.navigateByUrl('home');
     }
   }
 
