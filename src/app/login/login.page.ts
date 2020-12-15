@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import firebase from 'firebase/app';
+import { Button } from 'protractor';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -31,6 +31,54 @@ export class LoginPage implements OnInit {
         await alert.present();
       }
     );
+  }
+
+  resetPassword(email):void{
+    this.authService.resetPassword(email).then(
+      ()=>{
+        this.router.navigateByUrl('login');
+      },
+      async error =>{
+        const alert= await this.alertCtrl.create({
+          message:error.message,
+          buttons:[{text:'ok',role:'cancel'}],
+        });
+        await alert.present();
+      }
+    );
+  }
+
+  async presentAlertPrompt() {
+    const alert = await this.alertCtrl.create({
+      header: 'Ingrese su correo',
+      inputs: [
+        {
+          name: 'email',
+          type: 'text'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.router.navigateByUrl('login');
+          }
+        }, {
+          text: 'Ok',
+          handler: async () => {
+            console.log('Confirmado');
+            let result = await alert.onDidDismiss();
+            console.log(result);
+            this.resetPassword(result.data.email);
+            this.router.navigateByUrl('login');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }
