@@ -62,6 +62,7 @@ export class HomePage implements OnInit {
   openCart() {
     this.router.navigate(['checkout']);
   }
+  
   itemAdded(item){
     var myCart = this.cartService.getCart();
     var i;

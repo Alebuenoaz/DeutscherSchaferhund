@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
+import { homedir } from 'os';
 import { map, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
@@ -54,7 +57,8 @@ export class SubmitFormPage implements OnInit {
     ]],
     phone: ['', [
       Validators.required,
-      Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
+      //Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
+      Validators.pattern('^[0-9]{8}(?:-[0-9]{4})?$')
     ]],
     description: this.formBuilder.group({
       contentDesc: ['', [Validators.required, Validators.maxLength(300)]]
@@ -68,7 +72,9 @@ export class SubmitFormPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    public toastController: ToastController,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -104,6 +110,15 @@ export class SubmitFormPage implements OnInit {
     return (this.cartService.getCart().length === 0);
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Su oferta se registro correctamente',
+      duration: 5000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
   public submit() {
     console.log(this.registrationForm.value);
     this.cartService.addProductDB(
@@ -122,5 +137,12 @@ export class SubmitFormPage implements OnInit {
           }))
       }
     );
+    this.presentToast();
+    this.cartService.clearCart();
+    this.goToHome();
+  }
+
+  goToHome() {
+    this.router.navigate(['home']);
   }
 }

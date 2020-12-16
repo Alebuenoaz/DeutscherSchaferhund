@@ -70,5 +70,9 @@ export class CartService {
 
   addProductDB(cart: Cart){
     this.cartsCollection.add(cart);
-}
+  }
+
+  clearCart() {
+    this.cart = [];
+  }
 }
