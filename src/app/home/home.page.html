@@ -59,7 +59,7 @@
       <ion-card class="horizontal-cards">
         <ion-item>
           <!--ion-icon name="pin" slot="start"></ion-icon-->
-          <ion-label style="text-transform: uppercase;"><b>{{item.data.Insumo}}</b></ion-label>
+          <ion-label style="text-transform: uppercase;"><b>{{item.data.insumo}}</b></ion-label>
           <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
           <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)">
             <ion-icon name="add-outline"></ion-icon>
@@ -68,12 +68,12 @@
         </ion-item>
       
         <ion-card-content>
-          Decripción: {{item.data.Descripcion}}
+          Decripción: {{item.data.descripcion}}
         </ion-card-content>
         <ion-card-content>
-          Cantidad requerida: {{item.data.Stock}} {{ item.data.Unidad }}.
+          Cantidad requerida: {{item.data.stock}} {{ item.data.unidad }}.
         </ion-card-content>
-        <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
+        <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.img"></ion-img>
         <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
       </ion-card>
     </ion-slide>

@@ -93,12 +93,12 @@ export class SubmitFormPage implements OnInit {
     this.selectedItems = Object.keys(selected).map(key => selected[key]);*/
     this.itemsOffered = this.cartService.getCart()
     .map(element => (element.data))
-    .map(insumo => ({
-      insumo: insumo.Insumo,
-      img: insumo.Img,
-      unidad: insumo.Unidad,
-      cantidad: insumo.Stock,
-      cantidadOferta: insumo.Stock,
+    .map(oferta => ({
+      insumo: oferta.insumo,
+      img: oferta.img,
+      unidad: oferta.unidad,
+      cantidad: oferta.stock,
+      cantidadOferta: oferta.stock,
       precioUnitario: '0'
     }));
     console.log('items: ', this.selectedItems);

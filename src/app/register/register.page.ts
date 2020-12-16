@@ -13,10 +13,10 @@ export class RegisterPage implements OnInit {
   supplier: Supplier = {
     nombre: '',
     correo: '',
-    NIT: null,
+    nit: null,
     direccion: '',
-    numero: null,
-    password: ''
+    telefono: null,
+    contrasena: ''
   }
   constructor(private supplierService: SupplierService, private authService: AuthService, private router: Router) { }
 
@@ -27,10 +27,10 @@ export class RegisterPage implements OnInit {
       this.authService.register(this.supplier).then(() => {
         this.supplier.nombre = '';
         this.supplier.correo = '';
-        this.supplier.numero = null;
-        this.supplier.NIT = null;
+        this.supplier.telefono = null;
+        this.supplier.nit = null;
         this.supplier.direccion = '';
-        this.supplier.password = '';
+        this.supplier.contrasena = '';
         this.router.navigateByUrl('home');
       });
       // this.supplierService.addSupplier(this.supplier);

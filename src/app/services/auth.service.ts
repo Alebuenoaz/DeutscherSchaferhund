@@ -35,7 +35,7 @@ export class AuthService {
     try {
       const newSupplier = {...supplier};
       console.log('Supplier0' , supplier);
-      const { user } = await this.afAuth.createUserWithEmailAndPassword(supplier.correo, supplier.password);
+      const { user } = await this.afAuth.createUserWithEmailAndPassword(supplier.correo, supplier.contrasena);
       this.registerSupplierData(user, newSupplier);
       console.log('N Supplier' , newSupplier);
       // await this.sendVerifcationEmail();
@@ -69,10 +69,10 @@ export class AuthService {
     const data: Supplier = {
       correo: supplier.correo,
       nombre: supplier.nombre,
-      numero: supplier.numero,
-      NIT: supplier.NIT,
+      telefono: supplier.telefono,
+      nit: supplier.nit,
       direccion: supplier.direccion,
-      password: null
+      contrasena: supplier.contrasena
     };
 
     return supplierRef.set(data, { merge: true });

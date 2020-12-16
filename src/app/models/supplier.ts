@@ -1,8 +1,8 @@
 export interface Supplier {
     correo?: string;
     nombre: string;
-    numero: number;
-    NIT: number;
+    telefono: number;
+    nit: number;
     direccion: string;
-    password: string;
+    contrasena: string;
   }
