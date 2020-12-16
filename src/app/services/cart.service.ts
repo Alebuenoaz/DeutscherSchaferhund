@@ -33,7 +33,7 @@ export class CartService {
     }
   ];
 
-  private cart = [];
+  cart = [];
     /*{
       id: 'qwiyl7N4lo9JbCv1aDgn',
       data:
@@ -64,12 +64,26 @@ export class CartService {
     return this.cart;
   }
 
+  setCart(_cart) {
+    return this.cart = _cart;
+  }
+
   addProduct(insumo) {
     return this.cart.push(insumo);
   }
 
   addProductDB(cart: Cart){
     this.cartsCollection.add(cart);
+  }
+
+  delProduct(insumo): void {
+    console.log(insumo);
+    console.log(this.cart);
+    this.cart = this.cart.filter(function(item){
+      console.log(item);
+      return item.data.Insumo != insumo.insumo;
+    });
+    console.log(this.cart);
   }
 
   clearCart() {
