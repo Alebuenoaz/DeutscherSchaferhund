@@ -9,10 +9,17 @@
       COMPRAS
     </ion-title>
     <ion-buttons slot="end">
+      <ion-badge *ngIf="cartService.getCart().length > 0">{{ cartService.getCart().length }}</ion-badge>
       <ion-button  (click)="openCart()">
-        <ion-badge *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
         <ion-icon name="cart" slot="icon-only"></ion-icon>
       </ion-button>
+      <!-- <button ion-button icon-only (click)="openCart()">
+        <ion-badge *ngIf="cart.length > 0" style="position: absolute;
+          top: -0.2rem;
+          right: -0.2rem;
+          opacity: 0.9;">{{ cart.length }}</ion-badge>
+        <ion-icon name="cart" style="margin-right: 1.2rem;"></ion-icon>
+      </button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

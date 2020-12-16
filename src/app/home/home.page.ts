@@ -56,7 +56,7 @@ export class HomePage implements OnInit {
   }
 
   addToCart(product) {
-    this.cartService.addProduct(product);
+      this.cartService.addProduct(product);
   }
 
   openCart() {
@@ -71,7 +71,6 @@ export class HomePage implements OnInit {
             return true;
         }
     }
-
     return false;
   }
 

@@ -145,4 +145,15 @@ export class SubmitFormPage implements OnInit {
   goToHome() {
     this.router.navigate(['home']);
   }
+
+  removeFromCart(product) {
+    // this.cartService.delProduct(product);
+    this.itemsOffered = this.itemsOffered.filter(function(item){
+      return item != product;
+    });
+    this.selectedItems = this.selectedItems.filter(function(item){
+      return item != product;
+    });
+    this.cartService.delProduct(product);
+  }
 }
