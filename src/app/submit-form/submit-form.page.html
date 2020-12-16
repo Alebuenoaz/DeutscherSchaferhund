@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/home"></ion-back-button> -->
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Checkout</ion-title>
@@ -85,6 +86,13 @@
             <ion-label position="floating">Precio por {{ item.unidad }}</ion-label>
             <ion-input inputmode="numeric" type="number" [(ngModel)]="item.precioUnitario"></ion-input>
           </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-buttons>
+            <ion-button  (click)="removeFromCart(item)">
+              <ion-icon name="trash" slot="icon-only" color="danger"></ion-icon>
+            </ion-button>
+          </ion-buttons>
         </ion-col>
       </ion-row>
     </ion-list>
