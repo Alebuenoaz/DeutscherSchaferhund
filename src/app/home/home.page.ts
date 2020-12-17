@@ -16,7 +16,7 @@ import { CartService } from '../services/cart.service';
 export class HomePage implements OnInit {
   doc: any;
   tasks: any = [];
-  Tareas: any = [{
+  Insumos: any = [{
     id: '',
     data: {} as Insumo
    }];
@@ -36,23 +36,28 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit(){
-    // CALL FIRESTORE DOCUMENT AND SAVE IT IN OUR DOC VARIABLE.
-    /*this.firestore.doc('/Insumos/Carne').valueChanges().subscribe(res => {
-      this.doc = res;
-      console.log('Doc retrieved', this.doc);
-    });*/
     this.getProducts();
     this.cart = this.cartService.getCart();
   }
 
   getProducts() {
     this.firestore.collection('/Insumos').snapshotChanges().subscribe(res => {
-      this.Tareas = [];
+      this.Insumos = [];
       res.forEach(task => {
-        this.Tareas.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
+        this.Insumos.push({ id: task.payload.doc.id, data: task.payload.doc.data() });
       });
-      //console.log(this.Tareas);
     });
+  }
+
+  cantidadInsumosRequeridos() {
+    var cnt = 0;
+    for (let index = 0; index < this.Insumos.length; index++) {
+      const element = this.Insumos[index];
+      if (element.data.stock <= element.data.stockMinimo) {
+        cnt += 1;
+      }
+    }
+    return cnt;
   }
 
   addToCart(product) {

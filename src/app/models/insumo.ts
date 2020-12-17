@@ -2,6 +2,7 @@ export interface Insumo {
     descripcion: string;
     img: string;
     insumo: string;
-    stock: string;
+    stockMinimo: number;
+    stock: number;
     unidad: string;
 }
