@@ -81,7 +81,7 @@ export class CartService {
     console.log(this.cart);
     this.cart = this.cart.filter(function(item){
       console.log(item);
-      return item.data.Insumo != insumo.insumo;
+      return item.data.insumo != insumo.insumo;
     });
     console.log(this.cart);
   }
