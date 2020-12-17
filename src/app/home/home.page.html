@@ -32,9 +32,9 @@
   </ion-header>
 
   <div *ngIf="cantidadInsumosRequeridos() != 0;else emptyMessage"> 
-    <ion-slides [options]="sliderConfig">
+    <ion-slides [options]="sliderConfig" class="slides">
       <ng-container *ngFor="let item of Insumos">
-        <ion-slide *ngIf='item.data.stock <= item.data.stockMinimo' class="slides">
+        <ion-slide *ngIf='item.data.stock <= item.data.stockMinimo'>
           <ion-card class="horizontal-cards">
             <ion-item class="label-header">
               <ion-label style="text-transform: uppercase;"><b>{{item.data.insumo}}</b></ion-label>
