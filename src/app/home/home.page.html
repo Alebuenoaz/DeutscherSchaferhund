@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button  (click)="logOut()">
-        <ion-icon name="log-out" slot="icon-only"></ion-icon>
+        <ion-icon name="log-out" slot="icon-only" class=rotate-180></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
@@ -62,15 +62,15 @@
   -->
 
   <ion-slides [options]="sliderConfig">
-    <ion-slide *ngFor="let item of Tareas">
+    <ion-slide *ngFor="let item of Tareas" class="slides">
       <ion-card class="horizontal-cards">
-        <ion-item>
+        <ion-item class="label-header">
           <!--ion-icon name="pin" slot="start"></ion-icon-->
-          <ion-label style="text-transform: uppercase;"><b>{{item.data.insumo}}</b></ion-label>
+          <ion-label style="text-transform: uppercase;" ><b>{{item.data.insumo}}</b></ion-label>
           <!--ion-button fill="outline" slot="end">Añadir al carrito</ion-button-->
-          <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)">
-            <ion-icon name="add-outline"></ion-icon>
-            <ion-icon name="cart-outline"></ion-icon>
+          <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)" class="btn1" shape="round" expand="block">
+            <ion-icon name="add-outline" class="iconCart"></ion-icon>
+            <ion-icon name="cart-outline" class="iconCart"></ion-icon>
           </ion-button>
         </ion-item>
       
