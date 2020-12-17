@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button  (click)="logOut()">
-        <ion-icon name="log-out" slot="icon-only"></ion-icon>
+        <ion-icon name="log-out" slot="icon-only" class=rotate-180></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
@@ -34,13 +34,13 @@
   <div *ngIf="cantidadInsumosRequeridos() != 0;else emptyMessage"> 
     <ion-slides [options]="sliderConfig">
       <ng-container *ngFor="let item of Insumos">
-        <ion-slide *ngIf='item.data.stock <= item.data.stockMinimo'>
+        <ion-slide *ngIf='item.data.stock <= item.data.stockMinimo' class="slides">
           <ion-card class="horizontal-cards">
-            <ion-item>
+            <ion-item class="label-header">
               <ion-label style="text-transform: uppercase;"><b>{{item.data.insumo}}</b></ion-label>
-              <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)">
-                <ion-icon name="add-outline"></ion-icon>
-                <ion-icon name="cart-outline"></ion-icon>
+              <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)" class="btn1" shape="round" expand="block">
+                <ion-icon name="add-outline" class="iconCart"></ion-icon>
+                <ion-icon name="cart-outline" class="iconCart"></ion-icon>
               </ion-button>
             </ion-item>
           

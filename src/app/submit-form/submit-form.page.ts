@@ -92,14 +92,15 @@ export class SubmitFormPage implements OnInit {
     console.log('items0: ', this.selectedItems);
     this.selectedItems = Object.keys(selected).map(key => selected[key]);*/
     this.itemsOffered = this.cartService.getCart()
-    .map(element => (element.data))
+    .map(element => ({data: element.data, id: element.id}))
     .map(oferta => ({
-      insumo: oferta.insumo,
-      img: oferta.img,
-      unidad: oferta.unidad,
-      cantidad: oferta.stock,
-      cantidadOferta: oferta.stock,
-      precioUnitario: '0'
+      insumo: oferta.data.insumo,
+      img: oferta.data.img,
+      unidad: oferta.data.unidad,
+      cantidad: oferta.data.stock,
+      cantidadOferta: oferta.data.stock,
+      precioUnitario: '0',
+      codigoInsumo: oferta.id,
     }));
     console.log('items: ', this.selectedItems);
     console.log('itemsOffered: ', this.itemsOffered);
@@ -131,6 +132,7 @@ export class SubmitFormPage implements OnInit {
         idProveedor: this.authService.getSupplierId(),
         insumos: this.itemsOffered.map(input => (
           {
+            codigoInsumo: input.codigoInsumo,
             insumo: input.insumo,
             cantidad: input.cantidadOferta,
             precioUnitario: input.precioUnitario,
