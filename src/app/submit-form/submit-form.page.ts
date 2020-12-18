@@ -79,11 +79,11 @@ export class SubmitFormPage implements OnInit {
     }),
     quantity: ['', [
       Validators.required,
-      Validators.pattern('^[0-9]')
+      Validators.pattern('^[1-9][0-9]*')
     ]],
     pricePerUnit: ['', [
       Validators.required,
-      Validators.pattern('^[0-9]')
+      Validators.pattern('[+]?([0-9]*[.])?[0-9]+')
     ]]
   });
 
