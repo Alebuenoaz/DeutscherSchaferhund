@@ -13,13 +13,6 @@
       <ion-button  (click)="openCart()">
         <ion-icon name="cart" slot="icon-only"></ion-icon>
       </ion-button>
-      <!-- <button ion-button icon-only (click)="openCart()">
-        <ion-badge *ngIf="cart.length > 0" style="position: absolute;
-          top: -0.2rem;
-          right: -0.2rem;
-          opacity: 0.9;">{{ cart.length }}</ion-badge>
-        <ion-icon name="cart" style="margin-right: 1.2rem;"></ion-icon>
-      </button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -31,11 +24,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngIf="cantidadInsumosRequeridos() != 0;else emptyMessage"> 
-    <ion-slides [options]="sliderConfig" class="slides">
-      <ng-container *ngFor="let item of Insumos">
-        <ion-slide *ngIf='item.data.stock <= item.data.stockMinimo'>
-          <ion-card class="horizontal-cards">
+  <div *ngIf="cantidadInsumosRequeridos() != 0;else emptyMessage" > 
+    <ion-list style="margin-left: 40px">
+      <ng-container  *ngFor="let item of Insumos" class="" style="display: inline-block;">
+        
+          <ion-card class="horizontal-cards" *ngIf='item.data.stock <= item.data.stockMinimo'>
             <ion-item class="label-header">
               <ion-label style="text-transform: uppercase;"><b>{{item.data.insumo}}</b></ion-label>
               <ion-button  [disabled]="itemAdded(item)" (click)="addToCart(item)" class="btn1" shape="round" expand="block">
@@ -51,36 +44,15 @@
               Cantidad requerida: {{item.data.stockMinimo}} {{ item.data.unidad }}.
             </ion-card-content>
             <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.img"></ion-img>
-            <!--ion-img style="height: auto; max-width: auto;" [src]="item.data.Img"></ion-img-->
           </ion-card>
-        </ion-slide>
+      
       </ng-container>
-    </ion-slides>
+    </ion-list>
   </div>
   <ng-template #emptyMessage>
     <div id="container">
       <p>No hay insumos requeridos por el momento</p>
     </div>
   </ng-template>
-
-  <!--ion-list *ngIf="Tareas.length != 0">
-    <ion-card class="horizontal-cards" *ngFor="let item of Tareas">
-      <ion-item>
-        <ion-label style="text-transform: uppercase;"><b>{{item.data.Insumo}}</b></ion-label>
-        <ion-button (click)="addToCart(item)">
-          <ion-icon name="add-outline"></ion-icon>
-          <ion-icon name="cart-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    
-      <ion-card-content>
-        Decripción: {{item.data.Descripcion}}
-      </ion-card-content>
-      <ion-card-content>
-        Cantidad requerida: {{item.data.Stock}}
-      </ion-card-content>
-      <ion-img style="height: 25vh; max-width: auto;" [src]="item.data.Img"></ion-img>
-    </ion-card>
-  </ion-list-->
 
 </ion-content>

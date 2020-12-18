@@ -33,8 +33,6 @@
   align-items: center; 
   justify-content: center;
   background-color: white;
-  // --border-color: #ecebea;
-  margin: 1rem;
 }
 
 .rotate-180 {
@@ -81,7 +79,7 @@ ion-badge {
   color: #f6d83c;
 }
 
-iconLogOut {
+.iconLogOut {
   color: #22bb33;
   --background: #f6d83c;
 }
@@ -89,4 +87,18 @@ iconLogOut {
 .iconCart {
   color: #22bb33;
   --background: #f6d83c;
+}
+
+ng-container{
+  vertical-align: middle;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+.xc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
