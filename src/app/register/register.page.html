@@ -1,18 +1,18 @@
 <ion-header>
-  <ion-toolbar mode="ios" color ="secondary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
       <ion-title>
-          Registro Proveedores
+          Registro de Proveedor
       </ion-title>
-      <ion-buttons>
-        <ion-back-button defaultHref="/login" ></ion-back-button>
-      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Añadir proveedor</ion-card-title>
+        <ion-card-title>Llene los siguientes datos:</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <form (ngSubmit)="onSubmit()" class="col s6">
@@ -53,7 +53,7 @@
               </ion-text>
               <ion-input type="text" [(ngModel)]="supplier.direccion" name="direccion"></ion-input>
             </div>
-            <ion-input type="submit" value="Añadir" class="btn"></ion-input>
+            <ion-input type="submit" value="Registrarse" class="btn1"></ion-input>
           </div>
         </form>
       </ion-card-content>
