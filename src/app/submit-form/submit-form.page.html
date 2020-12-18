@@ -42,14 +42,14 @@
       </ion-list>
       <ion-list formGroupName="description">
         <ion-list-header>
-          <ion-label>Descripcion</ion-label>
+          <ion-label>Descripción:</ion-label>
         </ion-list-header>
         <ion-item>
           <ion-textarea 
             rows="6"
             wrap="off"
             formControlName="contentDesc"
-            placeholder="Breve Descrición">
+            placeholder="Breve Descripción">
           </ion-textarea>
         </ion-item>
         <div *ngFor="let error of errorMessages.contentDesc">
@@ -58,13 +58,13 @@
           </ng-container>
         </div>
       </ion-list>
-      <ion-button [disabled]="isCartEmpty() || !registrationForm.valid" type="submit" expand="block">Ofertar
+      <ion-button [disabled]="isCartEmpty() || !registrationForm.valid" type="submit" expand="block" class="btn1">Ofertar
         <ion-icon slot="end"name="create"></ion-icon>
       </ion-button>
     </form>
     <ion-list>
       <ion-list-header>
-        Carrito
+        Insumos a Ofrecer:
       </ion-list-header>
       <ion-row *ngFor="let item of itemsOffered;let i=index">
         <ion-col size="5">
