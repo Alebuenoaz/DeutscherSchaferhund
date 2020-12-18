@@ -25,7 +25,7 @@
   </ion-header>
 
   <div *ngIf="cantidadInsumosRequeridos() != 0;else emptyMessage" > 
-    <ion-list style="margin-left: 40px">
+    <ion-list style="margin-left: 35px">
       <ng-container  *ngFor="let item of Insumos" class="" style="display: inline-block;">
         
           <ion-card class="horizontal-cards" *ngIf='item.data.stock <= item.data.stockMinimo'>
