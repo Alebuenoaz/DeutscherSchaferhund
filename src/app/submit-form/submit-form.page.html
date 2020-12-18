@@ -61,40 +61,50 @@
       <ion-button [disabled]="isCartEmpty() || !registrationForm.valid" type="submit" expand="block" class="btn1">Ofertar
         <ion-icon slot="end"name="create"></ion-icon>
       </ion-button>
+      <ion-list>
+        <ion-list-header>
+          Insumos a Ofrecer:
+        </ion-list-header>
+        <ion-row *ngFor="let item of itemsOffered;let i=index">
+          <ion-col size="5">
+            <ion-item  >
+              <ion-thumbnail>
+                <ion-img [src]="item.img"></ion-img>
+              </ion-thumbnail>
+              <ion-label> &nbsp; {{item.insumo}} - Cantidad requerida: {{item.cantidad}}</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="3">
+            <ion-item >
+              <ion-label position="floating">Cantidad</ion-label>
+              <ion-input  inputmode="numeric" type="number" formControlName="quantity" min="{{item.cantidad}}" [(ngModel)]="item.cantidadOferta"></ion-input>
+            </ion-item>
+            <div *ngFor="let error of errorMessages.quantity">
+              <ng-container *ngIf="quantity.hasError(error.type) && (quantity.dirty || quantity.touched)">
+                <small class="error-message">{{error.message}}</small>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col size="3">
+            <ion-item>
+              <ion-label position="floating">Precio por {{ item.unidad }}</ion-label>
+              <ion-input inputmode="numeric" type="number" formControlName="pricePerUnit" [(ngModel)]="item.precioUnitario"></ion-input>
+            </ion-item>
+            <div *ngFor="let error of errorMessages.pricePerUnit">
+              <ng-container *ngIf="pricePerUnit.hasError(error.type) && (pricePerUnit.dirty || pricePerUnit.touched)">
+                <small class="error-message">{{error.message}}</small>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col>
+            <ion-buttons>
+              <ion-button  (click)="removeFromCart(item)">
+                <ion-icon name="trash" slot="icon-only" color="danger"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-list>
     </form>
-    <ion-list>
-      <ion-list-header>
-        Insumos a Ofrecer:
-      </ion-list-header>
-      <ion-row *ngFor="let item of itemsOffered;let i=index">
-        <ion-col size="5">
-          <ion-item  >
-            <ion-thumbnail>
-              <ion-img [src]="item.img"></ion-img>
-            </ion-thumbnail>
-            <ion-label> &nbsp; {{item.insumo}} - Cantidad requerida: {{item.cantidad}}</ion-label>
-          </ion-item>
-        </ion-col>
-        <ion-col size="3">
-          <ion-item >
-            <ion-label position="floating">Cantidad</ion-label>
-            <ion-input  inputmode="numeric" type="number" min="{{item.cantidad}}" [(ngModel)]="item.cantidadOferta"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col size="3">
-          <ion-item>
-            <ion-label position="floating">Precio por {{ item.unidad }}</ion-label>
-            <ion-input inputmode="numeric" type="number" [(ngModel)]="item.precioUnitario"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-buttons>
-            <ion-button  (click)="removeFromCart(item)">
-              <ion-icon name="trash" slot="icon-only" color="danger"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-col>
-      </ion-row>
-    </ion-list>
   </div>
 </ion-content>

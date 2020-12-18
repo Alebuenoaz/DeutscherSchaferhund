@@ -29,6 +29,12 @@ export class SubmitFormPage implements OnInit {
   get contentDesc() {
     return this.registrationForm.get('description.contentDesc');
   }
+  get quantity() {
+    return this.registrationForm.get('quantity');
+  }
+  get pricePerUnit() {
+    return this.registrationForm.get('pricePerUnit');
+  }
 
   public errorMessages = {
     name: [
@@ -46,6 +52,14 @@ export class SubmitFormPage implements OnInit {
     contentDesc: [
       { type: 'required', message: 'Debe poner una descripcion para cada item de la oferta' },
       { type: 'maxlength', message: 'No debe exceder los 300 caracteres' }
+    ],
+    quantity: [
+      { type: 'required', message: 'Debe poner una cantidad válida' },
+      { type: 'pattern', message: 'Porfavor ingrese una cantidad válida' }
+    ],
+    pricePerUnit: [
+      { type: 'required', message: 'Debe poner un precio válido' },
+      { type: 'pattern', message: 'Porfavor ingrese un precio mayor a 0' }
     ]
   };
 
@@ -62,7 +76,15 @@ export class SubmitFormPage implements OnInit {
     ]],
     description: this.formBuilder.group({
       contentDesc: ['', [Validators.required, Validators.maxLength(300)]]
-    })
+    }),
+    quantity: ['', [
+      Validators.required,
+      Validators.pattern('^[0-9]')
+    ]],
+    pricePerUnit: ['', [
+      Validators.required,
+      Validators.pattern('^[0-9]')
+    ]]
   });
 
   selectedItems = [];
